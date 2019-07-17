@@ -15,6 +15,7 @@ export default function App() {
       <ImageComponent></ImageComponent>
       <TitleComponent></TitleComponent>
       <InputComponent></InputComponent>
+      <InputComponent></InputComponent>
       <DetailsComponent></DetailsComponent>
       <ChangeCoinsComponent></ChangeCoinsComponent> 
     </View>

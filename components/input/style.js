@@ -1,22 +1,19 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    input_container: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 10
-    },
     box_input: {
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'row',
-        marginBottom: 20
+        marginBottom: 20,
+        marginLeft: 15,
+        marginRight: 15
     },
     opacity_box: {
         opacity: 0.7
     },
     touch: {
-        flexGrow: 1,
+        width: '20%',
         backgroundColor: '#f2f2f2',
         height: 45,
         alignItems: 'center',
@@ -26,13 +23,14 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 0
     },
     input:{
-        flexGrow: 3,
+        width: '80%',
         backgroundColor: '#c2c2c2',
         height: 45,
         borderRadius: 5,
         borderBottomLeftRadius: 0,
         borderTopLeftRadius: 0,
-        padding: 5
+        padding: 5,
+        color: 'white'
     }
 });
 
