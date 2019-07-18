@@ -1,23 +1,21 @@
 import React from 'react';
-import { View } from 'react-native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+import Main from './screens/Main';
+import CurrencySelection from './screens/CurrencySelection';
 
-import ImageComponent from './components/image/index';
-import TitleComponent from './components/title/index';
-import InputComponent from './components/input/index';
-import DetailsComponent from './components/details/index';
-import ChangeCoinsComponent from './components/change-coins/index';
+const AppNavigator = createStackNavigator(
+  {
+    Main,
+    CurrencySelection,
+  },
+  {
+    headerMode: 'none',
+    mode: 'modal',
+  },
+);
 
-import styles from './style';
+const AppContainer = createAppContainer(AppNavigator);
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <ImageComponent></ImageComponent>
-      <TitleComponent></TitleComponent>
-      <InputComponent></InputComponent>
-      <InputComponent></InputComponent>
-      <DetailsComponent></DetailsComponent>
-      <ChangeCoinsComponent></ChangeCoinsComponent> 
-    </View>
-  );
-}
+const App = () => <AppContainer />;
+
+export default App;
