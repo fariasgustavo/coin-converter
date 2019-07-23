@@ -2,13 +2,15 @@ import React from 'react';
 import { View, TouchableOpacity, TextInput, Text } from 'react-native';
 import styles from './style';
 
-const InputComponent = ({ navigation }) => (
+const InputComponent = ({ navigation,api }) => (
     <View 
     style={styles.box_input}
     >
         <TouchableOpacity
             style={styles.touch}
-            onPress={() => navigation.navigate('CurrencySelection')}
+            onPress={() => navigation.navigate('CurrencySelection',{
+                api
+            })}
         >
             <Text>AUD</Text>
         </TouchableOpacity>

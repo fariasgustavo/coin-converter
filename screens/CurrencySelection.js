@@ -1,30 +1,37 @@
 import React from 'react';
-import { View, FlatList, Text } from 'react-native';
+import { View, FlatList, Text,TouchableOpacity } from 'react-native';
+import style from '../style';
 
 export default class CurrencySelection extends React.Component {
     constructor(props){
         super(props);
 
         this.state = {
-            currencies: {}
+            currencies: []
         }
     }
 
     componentWillMount(){
-        const { data } = this.props;
-        this.setState({currencies: data});
+        const {navigation} = this.props;
+        this.setState({currencies: navigation.getParam('api').rates});
     }
 
-    render(){
-        <View>
-            <FlatList
-                data={[
-                    this.state.currencies
-                ]}
+    render(){       
+        const {currencies} = this.state;
+        console.log(currencies);
+        return(
+            <View style={style.container}>
 
-                renderItem={({item}) => <Text>1</Text>}
-            />
-        </View>
+                {currencies.map(({ currency }) => (
+                    <TouchableOpacity
+                        key={currency}
+                    >
+                        <Text style={ style.currency_item }>{currency}</Text>
+                    </TouchableOpacity>
+                ))}
+
+            </View>
+        );
     }
 
 }

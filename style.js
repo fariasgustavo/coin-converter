@@ -7,6 +7,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+
+    currency_item: {
+        color: "#000"
+    },
 });
 
 export default styles;

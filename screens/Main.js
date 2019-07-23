@@ -21,20 +21,27 @@ export default class MainScreen extends React.Component {
         const response = await fetch('https://api.exchangeratesapi.io/latest?base=USD');
         const data = await response.json();
 
-        console.log(data);
+        const { base, date, rates } = data;
 
-        this.setState({apiData: data});
+        const data_formated = {
+            base,
+            date,
+            rates: Object.entries(rates).map(([key, value]) => ({ currency: key, value })),
+        };
+
+        this.setState({apiData: data_formated});
     }
 
     render(){
         const { navigation } = this.props;
+        const { apiData } = this.state;
 
         return (
             <View style={styles.container}>
                 <ImageComponent/>
                 <TitleComponent/>
-                <InputComponent navigation={navigation}/>
-                <InputComponent navigation={navigation}/>
+                <InputComponent navigation={navigation} api={apiData}/>
+                <InputComponent navigation={navigation} api={apiData}/>
                 <DetailsComponent/>
                 <ChangeCoinsComponent/>
             </View>
