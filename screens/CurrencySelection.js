@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, FlatList, Text,TouchableOpacity } from 'react-native';
-import style from '../style';
+import { View, ScrollView, Image, Text,TouchableOpacity } from 'react-native';
+import styles from './style';
 
 export default class CurrencySelection extends React.Component {
     constructor(props){
@@ -18,19 +18,29 @@ export default class CurrencySelection extends React.Component {
 
     render(){       
         const {currencies} = this.state;
-        console.log(currencies);
+        const {navigation} = this.props;
+
         return(
-            <View style={style.container}>
+            <ScrollView style={styles.container}>
 
-                {currencies.map(({ currency }) => (
-                    <TouchableOpacity
-                        key={currency}
-                    >
-                        <Text style={ style.currency_item }>{currency}</Text>
-                    </TouchableOpacity>
-                ))}
+                <TouchableOpacity onPress={() => navigation.goBack()}>
+                    <Image style={styles.closeIcon} source={require('../assets/close.png')} />
+                </TouchableOpacity>
 
-            </View>
+                <Text style={styles.title}>Escolha uma moeda:</Text>
+
+                <View style={styles.bodyContainer}>
+
+                    {currencies.map(({ currency }) => (
+                        <TouchableOpacity
+                            style={styles.itemContainer}
+                            key={currency}
+                        >
+                            <Text style={styles.itemText}>{currency}</Text>
+                        </TouchableOpacity>
+                    ))}
+                </View>
+            </ScrollView>
         );
     }
 
