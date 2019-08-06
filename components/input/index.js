@@ -1,18 +1,17 @@
 import React from 'react';
 import { View, TouchableOpacity, TextInput, Text } from 'react-native';
 import styles from './style';
+import {connect} from 'react-redux';
 
-const InputComponent = ({ navigation,api }) => (
+const InputComponent = ({ navigation,initialCurrency,initialCurrencyIndex }) => (
     <View 
     style={styles.box_input}
     >
         <TouchableOpacity
             style={styles.touch}
-            onPress={() => navigation.navigate('CurrencySelection',{
-                api
-            })}
+            onPress={() => navigation.navigate('CurrencySelection')}
         >
-            <Text>AUD</Text>
+            <Text>{ initialCurrency[initialCurrencyIndex] }</Text>
         </TouchableOpacity>
         <TextInput 
             style={styles.input}
@@ -21,4 +20,4 @@ const InputComponent = ({ navigation,api }) => (
     </View> 
 );
 
-export default InputComponent;
+export default connect(state => ({ initialCurrency: state.initialCurrencies}))(InputComponent);
