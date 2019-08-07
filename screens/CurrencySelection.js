@@ -2,46 +2,31 @@ import React from 'react';
 import { View, ScrollView, Image, Text,TouchableOpacity } from 'react-native';
 import styles from './style';
 
-export default class CurrencySelection extends React.Component {
-    constructor(props){
-        super(props);
+import {connect} from 'react-redux';
 
-        this.state = {
-            currencies: []
-        }
-    }
+const CurrencySelection = ({ navigation,currencies }) => {
+    return(
+        <ScrollView style={styles.container}>
 
-    componentWillMount(){
-        const {navigation} = this.props;
-        this.setState({currencies: navigation.getParam('api').rates});
-    }
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Image style={styles.closeIcon} source={require('../assets/close.png')} />
+            </TouchableOpacity>
 
-    render(){       
-        const {currencies} = this.state;
-        const {navigation} = this.props;
+            <Text style={styles.title}>Escolha uma moeda:</Text>
 
-        return(
-            <ScrollView style={styles.container}>
+            <View style={styles.bodyContainer}>
 
-                <TouchableOpacity onPress={() => navigation.goBack()}>
-                    <Image style={styles.closeIcon} source={require('../assets/close.png')} />
-                </TouchableOpacity>
-
-                <Text style={styles.title}>Escolha uma moeda:</Text>
-
-                <View style={styles.bodyContainer}>
-
-                    {currencies.map(({ currency }) => (
-                        <TouchableOpacity
-                            style={styles.itemContainer}
-                            key={currency}
-                        >
-                            <Text style={styles.itemText}>{currency}</Text>
-                        </TouchableOpacity>
-                    ))}
-                </View>
-            </ScrollView>
-        );
-    }
-
+                {currencies.map(({ currency }) => (
+                    <TouchableOpacity
+                        style={styles.itemContainer}
+                        key={currency}
+                    >
+                        <Text style={styles.itemText}>{currency}</Text>
+                    </TouchableOpacity>
+                ))}
+            </View>
+        </ScrollView>
+    );
 }
+
+export default connect(state => ({ currencies: state.api.rates}))(CurrencySelection);

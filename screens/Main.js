@@ -32,7 +32,6 @@ class MainScreen extends React.Component {
         };
 
         this.setState({apiData: data_formated});
-        console.log(store);
     }
 
     render(){
@@ -40,7 +39,6 @@ class MainScreen extends React.Component {
         const { apiData } = this.state;
         
         return (
-            
             <Provider store={store}>
                 <View style={styles.container}>
                     <ImageComponent/>
