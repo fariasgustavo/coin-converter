@@ -2,14 +2,14 @@ import React from 'react';
 import { View } from 'react-native';
 import { Provider } from 'react-redux';
 
-import ImageComponent from '../components/image/index';
-import TitleComponent from '../components/title/index';
-import InputComponent from '../components/input/index';
-import DetailsComponent from '../components/details/index';
-import ChangeCoinsComponent from '../components/change-coins/index';
+import ImageComponent from '../../components/image/index';
+import TitleComponent from '../../components/title/index';
+import InputComponent from '../../components/input/index';
+import DetailsComponent from '../../components/details/index';
+import ChangeCoinsComponent from '../../components/change-coins/index';
 
-import store from '../store'
-import styles from '../style';
+import store from '../../store'
+import styles from './style';
 
 class MainScreen extends React.Component {
     constructor(props){
