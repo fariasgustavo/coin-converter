@@ -9,6 +9,8 @@ import ChangeCoinsComponent from '../../components/change-coins/index';
 
 import styles from './style';
 
+import {connect} from 'react-redux';
+
 class MainScreen extends React.Component {
     constructor(props){
         super(props);
@@ -39,8 +41,8 @@ class MainScreen extends React.Component {
             <View style={styles.container}>
                 <ImageComponent/>
                 <TitleComponent/>
-                <InputComponent initialCurrencyIndex={ 0 } navigation={ navigation } />
-                <InputComponent initialCurrencyIndex={ 1 } navigation={ navigation } />
+                <InputComponent initialCurrencyIndex={ initialCurrencies[0] } navigation={ navigation } />
+                <InputComponent initialCurrencyIndex={ initialCurrencies[1] } navigation={ navigation } />
                 <DetailsComponent/>
                 <ChangeCoinsComponent/>
             </View>
@@ -48,4 +50,4 @@ class MainScreen extends React.Component {
     }
 }
 
-export default MainScreen;
+export default connect(state => ({ currencies: state.initialCurrencies}))(MainScreen);
