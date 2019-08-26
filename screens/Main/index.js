@@ -1,6 +1,5 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Provider } from 'react-redux';
 
 import ImageComponent from '../../components/image/index';
 import TitleComponent from '../../components/title/index';
@@ -8,7 +7,6 @@ import InputComponent from '../../components/input/index';
 import DetailsComponent from '../../components/details/index';
 import ChangeCoinsComponent from '../../components/change-coins/index';
 
-import store from '../../store'
 import styles from './style';
 
 class MainScreen extends React.Component {
@@ -36,19 +34,16 @@ class MainScreen extends React.Component {
 
     render(){
         const { navigation } = this.props;
-        const { apiData } = this.state;
         
         return (
-            <Provider store={store}>
-                <View style={styles.container}>
-                    <ImageComponent/>
-                    <TitleComponent/>
-                    <InputComponent initialCurrencyIndex={ 0 } navigation={ navigation } />
-                    <InputComponent initialCurrencyIndex={ 1 } navigation={ navigation } />
-                    <DetailsComponent/>
-                    <ChangeCoinsComponent/>
-                </View>
-            </Provider>
+            <View style={styles.container}>
+                <ImageComponent/>
+                <TitleComponent/>
+                <InputComponent initialCurrencyIndex={ 0 } navigation={ navigation } />
+                <InputComponent initialCurrencyIndex={ 1 } navigation={ navigation } />
+                <DetailsComponent/>
+                <ChangeCoinsComponent/>
+            </View>
         );
     }
 }
