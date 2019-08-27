@@ -1,9 +1,8 @@
 import React from 'react';
 import { View, TouchableOpacity, TextInput, Text } from 'react-native';
 import styles from './style';
-import {connect} from 'react-redux';
 
-const InputComponent = ({ navigation,initialCurrency,initialCurrencyIndex }) => (
+const InputComponent = ({ navigation,initialCurrency }) => (
     <View 
     style={styles.box_input}
     >
@@ -11,7 +10,7 @@ const InputComponent = ({ navigation,initialCurrency,initialCurrencyIndex }) => 
             style={styles.touch}
             onPress={() => navigation.navigate('CurrencySelection')}
         >
-            <Text>{ initialCurrency[initialCurrencyIndex] }</Text>
+            <Text>{ initialCurrency }</Text>
         </TouchableOpacity>
         <TextInput 
             style={styles.input}
@@ -20,4 +19,4 @@ const InputComponent = ({ navigation,initialCurrency,initialCurrencyIndex }) => 
     </View> 
 );
 
-export default connect(state => ({ initialCurrency: state.initialCurrencies}))(InputComponent);
+export default InputComponent;

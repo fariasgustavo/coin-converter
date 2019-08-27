@@ -35,14 +35,16 @@ class MainScreen extends React.Component {
     }
 
     render(){
-        const { navigation } = this.props;
+        const { navigation,initialCurrencies } = this.props;
         
+        console.log(initialCurrencies[0]);
+
         return (
             <View style={styles.container}>
                 <ImageComponent/>
                 <TitleComponent/>
-                <InputComponent initialCurrencyIndex={ initialCurrencies[0] } navigation={ navigation } />
-                <InputComponent initialCurrencyIndex={ initialCurrencies[1] } navigation={ navigation } />
+                <InputComponent initialCurrency={ initialCurrencies[0] } navigation={ navigation } />
+                <InputComponent initialCurrency={ initialCurrencies[1] } navigation={ navigation } />
                 <DetailsComponent/>
                 <ChangeCoinsComponent/>
             </View>
@@ -50,4 +52,4 @@ class MainScreen extends React.Component {
     }
 }
 
-export default connect(state => ({ currencies: state.initialCurrencies}))(MainScreen);
+export default connect(state => ({ initialCurrencies: state.initialCurrencies}))(MainScreen);

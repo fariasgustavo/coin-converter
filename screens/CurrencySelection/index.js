@@ -9,7 +9,7 @@ const CurrencySelection = ({ navigation,currencies }) => {
         <ScrollView style={styles.container}>
 
             <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Image style={styles.closeIcon} source={require('../assets/close.png')} />
+                <Image style={styles.closeIcon} source={require('../../assets/close.png')} />
             </TouchableOpacity>
 
             <Text style={styles.title}>Escolha uma moeda:</Text>

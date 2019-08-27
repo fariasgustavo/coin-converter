@@ -22,7 +22,7 @@ const AppContainer = createAppContainer(AppNavigator);
 
 const App = () => 
   <Provider store={store}>
-    <AppContainer />;
+    <AppContainer />
   </Provider>
 
 export default App;
