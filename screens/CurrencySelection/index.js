@@ -29,4 +29,4 @@ const CurrencySelection = ({ navigation,currencies }) => {
     );
 }
 
-export default connect(state => ({ currencies: state.api.rates}))(CurrencySelection);
+export default connect(state => ({ currencies: state.currencies}))(CurrencySelection);

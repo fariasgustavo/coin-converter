@@ -25,19 +25,24 @@ class MainScreen extends React.Component {
 
         const { base, date, rates } = data;
 
-        const data_formated = {
+        const currencies = {
             base,
             date,
             rates: Object.entries(rates).map(([key, value]) => ({ currency: key, value })),
         };
 
-        this.setState({apiData: data_formated});
+        const { dispatch } = this.props;
+
+        console.log(currencies);
+
+        dispatch({
+            type: 'ALL_CURRENCIES',
+            currencies: currencies.rates,
+        });
     }
 
     render(){
-        const { navigation,initialCurrencies } = this.props;
-        
-        console.log(initialCurrencies[0]);
+        const { navigation,initialCurrencies,dispatch } = this.props;
 
         return (
             <View style={styles.container}>

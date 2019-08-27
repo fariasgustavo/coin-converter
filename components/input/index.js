@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity, TextInput, Text } from 'react-native';
-import styles from './style';
+import styles from './style'
 
 const InputComponent = ({ navigation,initialCurrency }) => (
     <View 
