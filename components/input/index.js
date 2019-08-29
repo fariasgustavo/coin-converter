@@ -2,7 +2,7 @@ import React from 'react';
 import { View, TouchableOpacity, TextInput, Text } from 'react-native';
 import styles from './style'
 
-const InputComponent = ({ navigation,initialCurrency }) => (
+const InputComponent = ({ navigation,initialCurrency,initialValue }) => (
     <View 
     style={styles.box_input}
     >
@@ -15,6 +15,7 @@ const InputComponent = ({ navigation,initialCurrency }) => (
         <TextInput 
             style={styles.input}
             keyboardType='numeric'
+            value={ initialValue }
         />
     </View> 
 );

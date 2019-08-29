@@ -33,23 +33,27 @@ class MainScreen extends React.Component {
 
         const { dispatch } = this.props;
 
-        console.log(currencies);
+        //console.log(currencies.rates.find(({ currency,value }) => currency === 'BRL').value);
 
         dispatch({
             type: 'ALL_CURRENCIES',
             currencies: currencies.rates,
+            base: currencies.base,
+            applyCurrency:{
+                'name': 'BRL',
+                'value': currencies.rates.find(({ currency,value }) => currency === 'BRL').value
+            }
         });
     }
 
     render(){
-        const { navigation,initialCurrencies,dispatch } = this.props;
-
+        const { navigation, baseCurrency, applyCurrency,state} = this.props;
         return (
             <View style={styles.container}>
                 <ImageComponent/>
                 <TitleComponent/>
-                <InputComponent initialCurrency={ initialCurrencies[0] } navigation={ navigation } />
-                <InputComponent initialCurrency={ initialCurrencies[1] } navigation={ navigation } />
+                <InputComponent initialCurrency={ baseCurrency } navigation={ navigation } initialValue={ 1 } />
+                <InputComponent initialCurrency={ applyCurrency.name } navigation={ navigation } initialValue={ applyCurrency.value } />
                 <DetailsComponent/>
                 <ChangeCoinsComponent/>
             </View>
@@ -57,4 +61,4 @@ class MainScreen extends React.Component {
     }
 }
 
-export default connect(state => ({ initialCurrencies: state.initialCurrencies}))(MainScreen);
+export default connect(state => ({ baseCurrency: state.base, applyCurrency: state.applyCurrency, state: state}))(MainScreen);
