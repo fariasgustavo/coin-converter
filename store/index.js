@@ -6,12 +6,16 @@ const INITIAL_STATE  = {
         "USD",
         "BRL"
     ],
+    applyCurrency: {
+        name: '',
+        value: ''
+    }
 };
 
 function reducer(state = INITIAL_STATE, action){
 
     if(action.type === 'ALL_CURRENCIES'){
-        return{ ...state, currencies: action.currencies,base: action.base,applyCurrency: Object.entries(action.applyCurrency).map(([key, value]) => ({ key, value }))}
+        return{ ...state, currencies: action.currencies,base: action.base,applyCurrency: action.applyCurrency}
     }
 
     return state;
