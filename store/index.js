@@ -2,20 +2,18 @@ import React from 'react';
 import { createStore } from 'redux';
 
 const INITIAL_STATE  = {
-    initialCurrencies:[
-        "USD",
-        "BRL"
-    ],
-    applyCurrency: {
-        name: '',
-        value: ''
-    }
+    baseCurrency: 'USD',
+    applyCurrency:{
+            'name': '',
+            'value': ''
+        }
 };
 
 function reducer(state = INITIAL_STATE, action){
-
     if(action.type === 'ALL_CURRENCIES'){
-        return{ ...state, currencies: action.currencies,base: action.base,applyCurrency: action.applyCurrency}
+        return{ ...state, currencies: action.currencies,applyCurrency: action.applyCurrency, baseCurrency: action.baseCurrency}
+    }else if(action.type === 'UPDATE_APPLY_CURRENCY'){
+        return { ...state, applyCurrency: action.applyCurrency}
     }
 
     return state;

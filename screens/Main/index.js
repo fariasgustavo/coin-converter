@@ -14,9 +14,6 @@ import {connect} from 'react-redux';
 class MainScreen extends React.Component {
     constructor(props){
         super(props);
-        this.state = {
-            apiData: {}
-        }
     }
 
     async componentWillMount(){
@@ -33,28 +30,25 @@ class MainScreen extends React.Component {
 
         const { dispatch } = this.props;
 
-        //console.log(currencies.rates.find(({ currency,value }) => currency === 'BRL').value);
-
         dispatch({
             type: 'ALL_CURRENCIES',
             currencies: currencies.rates,
-            base: currencies.base,
-            applyCurrency:{
-                'name': 'BRL',
-                'value': currencies.rates.find(({ currency,value }) => currency === 'BRL').value
-            }
+            baseCurrency: currencies.base,
+            applyCurrency:  {
+                    'name': 'BRL',
+                    'value': currencies.rates.find(({ currency }) => currency === 'BRL').value.toFixed(2)
+                }
+            
         });
     }
 
     render(){
-        const { navigation, baseCurrency, applyCurrency } = this.props;
-
+        const { navigation} = this.props;
         return (
             <View style={styles.container}>
                 <ImageComponent/>
                 <TitleComponent/>
-                <InputComponent initialCurrency={ baseCurrency } navigation={ navigation } initialValue={ '1' } />
-                <InputComponent initialCurrency={ applyCurrency.name } navigation={ navigation } initialValue={ applyCurrency.value.toString() } />
+                <InputComponent navigation={ navigation } />
                 <DetailsComponent/>
                 <ChangeCoinsComponent/>
             </View>
@@ -62,4 +56,4 @@ class MainScreen extends React.Component {
     }
 }
 
-export default connect(state => ({ baseCurrency: state.base, applyCurrency: state.applyCurrency}))(MainScreen);
+export default connect()(MainScreen);
