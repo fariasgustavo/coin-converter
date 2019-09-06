@@ -33,7 +33,8 @@ class CurrencySelection extends React.Component {
                 baseCurrency: currencies.base,
                 applyCurrency: {
                     'name': applyCurrency.name,
-                    'value': currencies.rates.find(({ currency }) => currency === applyCurrency.name).value.toFixed(2)
+                    'value': currencies.rates.find(({ currency }) => currency === applyCurrency.name).value.toFixed(2),
+                    'base': currencies.rates.find(({ currency }) => currency === applyCurrency.name).value.toFixed(2)
                 }
             });
         }else{

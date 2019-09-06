@@ -33,11 +33,15 @@ class MainScreen extends React.Component {
         dispatch({
             type: 'ALL_CURRENCIES',
             currencies: currencies.rates,
-            baseCurrency: currencies.base,
+            baseCurrency: {
+                'name': currencies.base,
+                'value': '1'
+            },
             applyCurrency:  {
-                    'name': 'BRL',
-                    'value': currencies.rates.find(({ currency }) => currency === 'BRL').value.toFixed(2)
-                }
+                'name': 'BRL',
+                'value': currencies.rates.find(({ currency }) => currency === 'BRL').value.toFixed(2),
+                'base': currencies.rates.find(({ currency }) => currency === 'BRL').value.toFixed(2)
+            }
             
         });
     }
