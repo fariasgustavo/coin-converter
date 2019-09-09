@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React from 'react';
 import { View, TouchableOpacity, TextInput, Text } from 'react-native';
 import styles from './style'
 
@@ -6,7 +6,6 @@ import {connect} from 'react-redux';
 
 
 const InputComponent = ({ navigation,applyCurrency,baseCurrency,dispatch }) => {
-    console.log(applyCurrency);
     return(
         <View>
             <View 
