@@ -5,7 +5,6 @@ import ImageComponent from '../../components/image/index';
 import TitleComponent from '../../components/title/index';
 import InputComponent from '../../components/input/index';
 import DetailsComponent from '../../components/details/index';
-import ChangeCoinsComponent from '../../components/change-coins/index';
 
 import styles from './style';
 
@@ -54,7 +53,6 @@ class MainScreen extends React.Component {
                 <TitleComponent/>
                 <InputComponent navigation={ navigation } />
                 <DetailsComponent/>
-                <ChangeCoinsComponent/>
             </View>
         );
     }
