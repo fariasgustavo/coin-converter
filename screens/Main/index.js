@@ -28,6 +28,10 @@ class MainScreen extends React.Component {
         };
 
         const { dispatch } = this.props;
+        
+        const [year,month,day] = date.split('-');
+
+        console.log(year);
 
         dispatch({
             type: 'ALL_CURRENCIES',
@@ -40,8 +44,8 @@ class MainScreen extends React.Component {
                 'name': 'BRL',
                 'value': currencies.rates.find(({ currency }) => currency === 'BRL').value.toFixed(2),
                 'base': currencies.rates.find(({ currency }) => currency === 'BRL').value.toFixed(2)
-            }
-            
+            },
+            date: 'em ' + day + ' de ' + month + ', ' + year
         });
     }
 

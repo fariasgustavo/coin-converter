@@ -48,7 +48,7 @@ const InputComponent = ({ navigation,applyCurrency,baseCurrency,dispatch }) => {
                 <TextInput 
                     style={styles.input}
                     keyboardType='numeric'
-                    value={ applyCurrency.value }
+                    value={ applyCurrency.value.toString() }
                     onChangeText={ (newValue) => dispatch({
                         type: 'CHANGE_APPLY_CURRENCY_VALUE',
                         baseCurrency: {

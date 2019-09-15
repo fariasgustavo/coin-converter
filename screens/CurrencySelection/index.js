@@ -30,7 +30,10 @@ class CurrencySelection extends React.Component {
             dispatch({
                 type: 'ALL_CURRENCIES',
                 currencies: currencies.rates,
-                baseCurrency: currencies.base,
+                baseCurrency: {
+                    'name': currencies.base,
+                    'value': '1'
+                },
                 applyCurrency: {
                     'name': applyCurrency.name,
                     'value': currencies.rates.find(({ currency }) => currency === applyCurrency.name).value.toFixed(2),
@@ -40,7 +43,8 @@ class CurrencySelection extends React.Component {
         }else{
             let newApplyCurrency = {
                 'name': currencySelected,
-                'value': value
+                'base': value.toFixed(2),
+                'value': value.toFixed(2)
             }
 
             dispatch({
@@ -68,7 +72,11 @@ class CurrencySelection extends React.Component {
                         <TouchableOpacity
                             style={styles.itemContainer}
                             key={currency}
-                            onPress={ () => this.selectCurrency(currency,value) }
+                            onPress={ () => {
+                                    this.selectCurrency(currency,value);
+                                    navigation.goBack(); 
+                                }
+                            }
                         >
                             <Text style={styles.itemText}>{currency}</Text>
                         </TouchableOpacity>

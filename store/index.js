@@ -7,15 +7,16 @@ const INITIAL_STATE  = {
         'value': '1'
     },
     applyCurrency:{
-            'name': '',
-            'value': '',
-            'base': ''
-        }
+        'name': '',
+        'value': '',
+        'base': ''
+    },
+    date: ''
 };
 
 function reducer(state = INITIAL_STATE, action){
     if(action.type === 'ALL_CURRENCIES'){
-        return{ ...state, currencies: action.currencies,applyCurrency: action.applyCurrency, baseCurrency: action.baseCurrency}
+        return{ ...state, currencies: action.currencies,applyCurrency: action.applyCurrency, baseCurrency: action.baseCurrency,date: action.date}
     }else if(action.type === 'UPDATE_APPLY_CURRENCY'){
         return { ...state, applyCurrency: action.applyCurrency}
     }else if(action.type === 'CHANGE_BASE_CURRENCY_VALUE' || action.type === 'CHANGE_APPLY_CURRENCY_VALUE'){
