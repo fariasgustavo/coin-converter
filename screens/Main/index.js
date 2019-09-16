@@ -31,8 +31,6 @@ class MainScreen extends React.Component {
         
         const [year,month,day] = date.split('-');
 
-        console.log(year);
-
         dispatch({
             type: 'ALL_CURRENCIES',
             currencies: currencies.rates,

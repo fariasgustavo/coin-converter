@@ -37,6 +37,10 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
     },
+
+    selectCurrency: {
+        backgroundColor: '#cccccc'
+    }
 });
 
 export default styles;

@@ -26,7 +26,8 @@ class CurrencySelection extends React.Component {
             };
             
             const{ applyCurrency } = this.props;
-            
+            const [year,month,day] = date.split('-');
+
             dispatch({
                 type: 'ALL_CURRENCIES',
                 currencies: currencies.rates,
@@ -38,7 +39,8 @@ class CurrencySelection extends React.Component {
                     'name': applyCurrency.name,
                     'value': currencies.rates.find(({ currency }) => currency === applyCurrency.name).value.toFixed(2),
                     'base': currencies.rates.find(({ currency }) => currency === applyCurrency.name).value.toFixed(2)
-                }
+                },
+                date: 'em ' + day + ' de ' + month + ', ' + year
             });
         }else{
             let newApplyCurrency = {
@@ -55,7 +57,7 @@ class CurrencySelection extends React.Component {
     }
 
     render(){
-        const{currencies,navigation} = this.props;
+        const{currencies,navigation,applyCurrency,baseCurrency} = this.props;
 
         return(
             <ScrollView style={styles.container}>
@@ -70,7 +72,10 @@ class CurrencySelection extends React.Component {
     
                     {currencies.map(({ currency,value }) => (
                         <TouchableOpacity
-                            style={styles.itemContainer}
+                            style={[
+                                styles.itemContainer,
+                                currency == applyCurrency.name || currency == baseCurrency.name ? styles.selectCurrency : ''
+                            ]}
                             key={currency}
                             onPress={ () => {
                                     this.selectCurrency(currency,value);
@@ -87,4 +92,4 @@ class CurrencySelection extends React.Component {
     }
 }
 
-export default connect(state => ({ currencies: state.currencies, applyCurrency: state.applyCurrency}))(CurrencySelection);
+export default connect(state => ({ currencies: state.currencies, applyCurrency: state.applyCurrency, baseCurrency: state.baseCurrency}))(CurrencySelection);
